@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monster Smash</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ===== PANTALLA DE INICIO ===== -->
+    <div id="StartScreen" class="screen active">
+      <div class="start-content">
+        <h1 id="GameTitle" class="game-title">
+          <span class="title-line">Monster</span>
+          <span class="title-line accent">Smash</span>
+        </h1>
+        <p class="subtitle">
+          ¡Caza a todos los monstruos del bosque encantado antes de que se acabe
+          el tiempo!
+        </p>
+        <div class="how-to-play">
+          <div class="instruction">
+            <span class="instruction-icon">🖱️</span>
+            <span>Haz clic en los monstruos</span>
+          </div>
+          <div class="instruction">
+            <span class="instruction-icon">💀</span>
+            <span>Elimínalos para sumar puntos</span>
+          </div>
+          <div class="instruction">
+            <span class="instruction-icon">⏱️</span>
+            <span>30 segundos para obtener el mayor puntaje</span>
+          </div>
+        </div>
+        <button id="StartButton" class="start-btn">
+          <span class="btn-text">⚔️ INICIAR JUEGO</span>
+          <span class="btn-glow"></span>
+        </button>
+
+        <!-- ===== LEADERBOARD ===== -->
+        <div id="Leaderboard" class="leaderboard">
+          <div class="leaderboard-header">
+            <h2 class="leaderboard-title">🏆 Mejores Puntajes</h2>
+            <button
+              id="ClearScoresButton"
+              class="clear-btn"
+              title="Borrar historial"
+            >
+              🗑️
+            </button>
+          </div>
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Puntaje</th>
+                <th>Monstruos</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody id="LeaderboardBody">
+              <!--  -->
+            </tbody>
+          </table>
+          <p id="LeaderboardEmpty" class="leaderboard-empty">
+            Aún no hay puntajes. ¡Juega tu primera partida!
+          </p>
+
+          <!-- Confirmación para borrar historial -->
+          <div id="ClearConfirm" class="clear-confirm hidden">
+            <p class="clear-confirm-text">¿Borrar todo el historial?</p>
+            <div class="clear-confirm-buttons">
+              <button id="ConfirmYes" class="confirm-btn confirm-yes">
+                ✅ Sí, borrar
+              </button>
+              <button id="ConfirmNo" class="confirm-btn confirm-no">
+                ❌ Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="FloatingSprites" class="floating-sprites"></div>
+    </div>
+
+    <!-- ===== PANTALLA DE JUEGO ===== -->
+    <div id="GameScreen" class="screen">
+      <header id="GameHUD" class="game-hud">
+        <div class="hud-item timer-container">
+          <span class="hud-icon">⏱️</span>
+          <div class="timer-bar-wrapper">
+            <div id="TimerBar" class="timer-bar"></div>
+          </div>
+          <span id="TimerDisplay" class="hud-value">30</span>
+        </div>
+        <div class="hud-item score-container">
+          <span class="hud-icon">⭐</span>
+          <span id="ScoreDisplay" class="hud-value score-value">0</span>
+        </div>
+      </header>
+      <div id="GameArena" class="game-arena">
+        <!-- Los sprites se generan dinámicamente aquí -->
+      </div>
+
+      <!-- ===== PAUSA OVERLAY ===== -->
+      <div id="PauseOverlay" class="pause-overlay">
+        <div class="pause-content">
+          <h2 class="pause-title">⏸️ Pausa</h2>
+          <p class="pause-hint">Presiona <kbd>ESC</kbd> para reanudar</p>
+          <div class="pause-buttons">
+            <button id="ResumeButton" class="start-btn resume-btn">
+              <span class="btn-text">▶️ REANUDAR</span>
+              <span class="btn-glow"></span>
+            </button>
+            <button id="QuitButton" class="start-btn quit-btn">
+              <span class="btn-text">🚪 SALIR</span>
+              <span class="btn-glow"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PANTALLA DE FIN ===== -->
+    <div id="EndScreen" class="screen">
+      <div class="end-content">
+        <h2 class="end-title">¡Tiempo Agotado!</h2>
+        <div class="final-score-display">
+          <span class="final-label">Puntaje Final</span>
+          <span id="FinalScore" class="final-score">0</span>
+          <span id="FinalMessage" class="final-message"></span>
+        </div>
+        <div class="end-stats">
+          <div class="stat">
+            <span class="stat-icon">💀</span>
+            <span id="TotalKills" class="stat-value">0</span>
+            <span class="stat-label">Monstruos eliminados</span>
+          </div>
+        </div>
+        <button id="RestartButton" class="start-btn restart-btn">
+          <span class="btn-text">JUGAR DE NUEVO</span>
+          <span class="btn-glow"></span>
+        </button>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
